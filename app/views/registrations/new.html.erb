@@ -1,0 +1,28 @@
+<h2>Sign up for breddit</h2>
+<% if @user.errors.any? %>
+<ul>
+  <% @user.errors.full_messages.each do |error| %>
+    <li><%= error %></li>
+  <% end %>
+</ul>
+<% end %>
+
+<%= form_for @user, url: sign_up_path do |f| %>
+  <div class="name">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div><br>
+  <div class="username">
+    <%= f.label :username %><br>
+    <%= f.text_field :username %>
+  </div><br>
+  <div class="password">
+    <%= f.label :password %><br>
+    <%= f.password_field :password %>
+  </div><br>
+  <div class="password_confirmation">
+    <%= f.label :password_confirmation %><br>
+    <%= f.password_field :password_confirmation %>
+  </div><br>
+  <%= f.submit "Sign up!", class: "btn btn-primary" %>
+<% end %>

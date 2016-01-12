@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+<h2>User: <%= @user.name %></h2>
+<h3 class="userPage">Recipes</h3>
+<ul>
+  <% @recipes.each do |recipe| %>
+    <% if recipe %>
+      <li><a href="/recipes/<%=recipe.id%>"><%=recipe.name%></a></li>
+      <br>
+    <% end %>
+  <% end %>
+</ul>
+<h3 class="userPage">Comments</h3>
+<ul>
+  <% @comments.each do |comment| %>
+    <% if comment.recipe %>
+      <li><a href="/recipes/<%=comment.recipe.id%>"><%=comment.recipe.name%></a></li>
+      <br>
+    <% end %>
+  <% end %>
+</ul>

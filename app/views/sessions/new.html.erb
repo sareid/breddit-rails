@@ -1,0 +1,18 @@
+<h2>Sign in to breddit</h2>
+  <% if flash[:error] %>
+      <%= flash[:error] %>
+  <% end %>
+
+<%= form_tag sign_in_path do %>
+  <div class="username">
+    <%= label_tag :username %><br>
+    <%= text_field_tag :username %>
+  </div>
+
+  <div class="password">
+    <%= label_tag :password %><br>
+    <%= password_field_tag :password %>
+  </div><br>
+
+  <%= submit_tag "Sign in", class: "btn btn-primary" %>
+<% end %>

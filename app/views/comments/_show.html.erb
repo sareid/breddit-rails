@@ -1,0 +1,25 @@
+
+<% @comments = Comment.where(recipe_id: @recipe.id) %>
+<%@comments.each do |comment| %>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4>
+            <a href="/users/<%=comment.user.id%>"><%= comment.user.name %></a> writes:</h4></div>
+        <div class="panel-body">
+          <p><%= comment.comment_text %></p>
+
+          <% if session[:user_id] == comment.user_id %>
+            <div class="btn-group-sm" role="group" aria-label="...">
+              <%= link_to [:edit, @recipe, comment], class: "btn btn-default" do%>
+                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+              <% end %>
+              <%= link_to [@recipe, comment], data: {:confirm => "Are you sure?"}, :method => :delete, class: "btn btn-default" do%>
+
+                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+              <% end %>
+            </div>
+          <% end %>
+
+        </div>
+      </div>
+    <% end %>

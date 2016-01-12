@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Flatiron School individual project"/>
+  <meta name="author" content="S. Andrew Reid">
+  <title>breddit: the best thing since sliced Digg</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag "main" %>
+  <link href='https://fonts.googleapis.com/css?family=Alfa+Slab+One' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Gentium+Book+Basic' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="row">
+      <div class="col-md-4">
+      <a href="/"><h1>BREDDIT</h1></a>
+      <p id="notice"><%= notice %></p>
+        <% if logged_in? %>
+          <p>Welcome back, <%= current_user.name %></p>
+          <%= link_to "Sign out", sign_out_path, method: :delete, class: "btn-sm btn-primary" %>
+          <br>
+        <% else %>
+          <p>
+            <%= link_to "Sign In", sign_in_path, class: "btn-sm btn-primary" %>
+            <%= link_to "Sign Up", sign_up_path, class:  "btn-sm btn-primary" %>
+          </p>
+        <% end %>
+        <br>
+        <h3><a href="/recipes/new">Add a new recipe</a></h3><br>
+        <h3><a href="/recipes">Show all recipes</a><br></h3>
+      </div>
+      <div class="col-md-1"></div>
+      <div class="col-md-7">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

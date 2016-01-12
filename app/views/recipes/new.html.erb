@@ -1,0 +1,9 @@
+<h2>Add a new recipe</h2>
+<% if logged_in? %>
+  <%= render 'form' %>
+<% else %>
+  <p>You must be logged in to post a recipe.</p>
+  <%= link_to "Sign In", sign_in_path, class: "btn-sm btn-primary" %>
+<% end %>
+
+
